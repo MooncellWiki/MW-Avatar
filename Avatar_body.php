@@ -4,10 +4,11 @@ namespace Avatar;
 class Avatars {
 
 	public static function getLinkFor($userId, $res = false) {
+		global $wgAvatarPathPrefix;
 		if ($res !== false) {
-			return "http://avatar.mooncell.wiki/ak/$userId/$res.png";
+			return $wgAvatarPathPrefix + "$userId/$res.png";
 		} else {
-			return "http://avatar.mooncell.wiki/ak/$userId/128.png";
+			return $wgAvatarPathPrefix + "$userId/128.png";
 		}
 	}
 
