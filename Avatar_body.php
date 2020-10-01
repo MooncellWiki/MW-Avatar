@@ -3,13 +3,11 @@ namespace Avatar;
 
 class Avatars {
 
-	public static function getLinkFor($username, $res = false) {
-		global $wgScriptPath;
-		$path = "$wgScriptPath/extensions/Avatar/avatar.php?user=$username";
+	public static function getLinkFor($userId, $res = false) {
 		if ($res !== false) {
-			return $path . '&res=' . $res;
+			return "http://avatar.mooncell.wiki/ak/$userId/$res.png";
 		} else {
-			return $path;
+			return "http://avatar.mooncell.wiki/ak/$userId/128.png";
 		}
 	}
 

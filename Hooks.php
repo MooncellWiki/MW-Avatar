@@ -3,14 +3,15 @@ namespace Avatar;
 
 class Hooks {
 
-	public static function onGetPreferences(\User $user, &$preferences) {
+	public static function onGetPreferences(\User $user, &$preferences)
+	{
 		$link = \Linker::link(\SpecialPage::getTitleFor("UploadAvatar"), wfMessage('uploadavatar')->text());
 
 		$preferences['editavatar'] = array(
 			'type' => 'info',
 			'raw' => true,
 			'label-message' => 'prefs-editavatar',
-			'default' => '<img src="' . Avatars::getLinkFor($user->getName()) . '" width="32"></img> ' . $link,
+			'default' => '<img src="' . Avatars::getLinkFor($user->getId()) . '" width="32"></img> ' . $link,
 			'section' => 'personal/info',
 		);
 
