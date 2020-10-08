@@ -6,9 +6,9 @@ class Avatars {
 	public static function getLinkFor($userId, $res = false) {
 		global $wgAvatarPathPrefix;
 		if ($res !== false) {
-			return $wgAvatarPathPrefix + "$userId/$res.png";
+			return $wgAvatarPathPrefix .  "$userId/$res.png";
 		} else {
-			return $wgAvatarPathPrefix + "$userId/128.png";
+			return $wgAvatarPathPrefix . "$userId/128.png";
 		}
 	}
 
