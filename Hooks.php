@@ -19,10 +19,6 @@ class Hooks {
 	}
 	
 	public static function onSidebarBeforeOutput(\Skin $skin, &$sidebar) {
-		if ( version_compare( MW_VERSION, '1.35', '<' ) ) {
-			return false;
-		}
-		
 		$user = $skin->getRelevantUser();
 		
 		if ($user) {
@@ -41,26 +37,6 @@ class Hooks {
 			$toolbox['viewavatar'] = $baseTemplate->data['nav_urls']['viewavatar'];
 			$toolbox['viewavatar']['id'] = 't-viewavatar';
 		}
-	}
-
-	public static function onSkinTemplateOutputPageBeforeExec(&$skinTemplate, &$tpl) {
-
-		$user = $skinTemplate->getRelevantUser();
-
-		if ($user) {
-			$nav_urls = $tpl->get('nav_urls');
-
-			$nav_urls['viewavatar'] = [
-				'text' => wfMessage('sidebar-viewavatar')->text(),
-				'href' => \SpecialPage::getTitleFor('ViewAvatar')->getLocalURL(array(
-					'user' => $user->getName(),
-				)),
-			];
-
-			$tpl->set('nav_urls', $nav_urls);
-		}
-
-		return true;
 	}
 
 	public static function onSetup() {
